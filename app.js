@@ -4,9 +4,9 @@ var port = process.env.PORT || 8000;
 
 app.get('/', function(req, res) {
 	remote_ip = req.headers['x-forwarded-for']; 
-	var regexp = /(\([^)]+\))/g;
+	var regexp = /\(([^)]+)\)/g;
 	var match = regexp.exec(req.headers['user-agent']);
-	os = match[0];
+	os = match[1];
 	language = req.headers['accept-language']
 	res.json({
 		"ipaddress": remote_ip,
