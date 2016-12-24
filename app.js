@@ -3,7 +3,7 @@ var app = express()
 var port = process.env.PORT || 8000;
 
 app.get('/', function(req, res) {
-	remote_ip = req.ip;
+	remote_ip = req.headers['x-forwarded-for']; 
 	var regexp = /(\([^)]+\))/g;
 	var match = regexp.exec(req.headers['user-agent']);
 	os = match[0];
